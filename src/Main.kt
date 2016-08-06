@@ -8,5 +8,5 @@ import view.GUI
 
 
 fun main(args: Array<String>) {
-    GUI("Line by ice1000", Graph("test.png"))
+    GUI("Line by ice1000", Graph("test2.png"))
 }

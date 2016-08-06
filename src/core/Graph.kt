@@ -13,13 +13,25 @@ class Graph(path: String) {
 
     init {
         image = ImageIO.read(File(path))
-        for (x in 0..image.width) {
-            for (y in 0..image.height) {
+        (0..image.width - 1).forEach { x ->
+            (0..image.height - 1).forEach { y ->
                 image.setRGB(
                         x, y,
-                        image.getRGB(x, y)
+                        getBin(x, y)
                 )
             }
         }
     }
+
+    /**
+     * @param x x in image
+     * @param y y in image
+     * @return black or white
+     */
+    private fun getBin(x: Int, y: Int) =
+            if (BinaryMaker.getGray(image.getRGB(x, y)) > average)
+                0b111111
+            else
+                0b0
+
 }
