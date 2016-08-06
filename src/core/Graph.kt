@@ -1,5 +1,6 @@
 package core
 
+import java.awt.Color
 import java.awt.image.BufferedImage
 import java.io.File
 import javax.imageio.ImageIO
@@ -30,8 +31,8 @@ class Graph(path: String) {
      */
     private fun getBin(x: Int, y: Int) =
             if (BinaryMaker.getGray(image.getRGB(x, y)) > average)
-                0b111111
+                Color(0b111111, 0b111111, 0b111111).rgb
             else
-                0b0
+                Color(0b000000, 0b000000, 0b000000).rgb
 
 }
