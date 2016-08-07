@@ -9,11 +9,11 @@ import javax.imageio.ImageIO
  * @author ice1000
  * Created by ice1000 on 16-8-6.
  */
-class Graph(path: String) {
+class Graph(file: File) {
     val image: BufferedImage
 
     init {
-        image = ImageIO.read(File(path))
+        image = ImageIO.read(file)
         (0..image.width - 1).forEach { x ->
             (0..image.height - 1).forEach { y ->
                 image.setRGB(

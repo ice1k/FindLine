@@ -14,7 +14,7 @@ import javax.swing.filechooser.FileNameExtensionFilter
  * @author ice1000
  * Created by ice1000 on 16-8-6.
  */
-class GUI(title: String, graph: Graph) {
+class GUI(title: String, var graph: Graph) {
     val frame = JFrame(title)
     val panel = ImagePanel(graph.image)
 
@@ -24,17 +24,15 @@ class GUI(title: String, graph: Graph) {
         frame.layout = BorderLayout()
         val chooserButton = JButton("Open File")
         space += chooserButton.preferredSize.height
-
-        setFrameSize(graph.image.width, graph.image.height)
+        setupFrame()
         frame.add(panel, BorderLayout.CENTER)
         chooserButton.addActionListener { action ->
             val chooser = JFileChooser()
             chooser.fileSelectionMode = JFileChooser.FILES_ONLY
             chooser.fileFilter = FileNameExtensionFilter("PNG Image", "png")
             if (chooser.showOpenDialog(chooser) == JFileChooser.APPROVE_OPTION) {
-                val image = ImageIO.read(chooser.selectedFile)
-                setFrameSize(image.width, image.height)
-                panel.change(image)
+                graph = Graph(chooser.selectedFile)
+                setupFrame()
             }
         }
         frame.add(chooserButton, BorderLayout.SOUTH)
@@ -43,5 +41,10 @@ class GUI(title: String, graph: Graph) {
 
     private fun setFrameSize(width: Int, height: Int) {
         frame.bounds = Rectangle(x, y, width, height + space)
+    }
+    
+    private fun setupFrame() {
+        setFrameSize(graph.image.width, graph.image.height)
+        panel.change(graph.image)
     }
 }
