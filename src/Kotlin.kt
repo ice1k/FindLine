@@ -7,7 +7,6 @@ import java.io.File
  * Created by ice1000 on 16-8-6.
  */
 
-
 fun main(args: Array<String>) {
 	GUI("Line by ice1000", GraphProcessor(File("test.png")))
 }
