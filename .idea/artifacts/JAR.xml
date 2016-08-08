@@ -6,7 +6,6 @@
         <element id="module-output" name="FindLine" />
       </element>
       <element id="library" level="project" name="KotlinJavaRuntime" />
-      <element id="library" level="application" name="groovy-2.4.7" />
     </root>
   </artifact>
 </component>

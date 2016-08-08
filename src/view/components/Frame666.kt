@@ -2,7 +2,6 @@ package view.components
 
 import java.awt.BorderLayout
 import java.awt.Component
-import java.awt.Rectangle
 import javax.swing.JFrame
 
 /**
@@ -26,7 +25,7 @@ class Frame666(title: String) : JFrame(title) {
 	}
 
 	fun setupSize(width: Int, height: Int) {
-		bounds = Rectangle(view.x, view.y, width + spaceWidth, height + spaceHeight)
+		setSize(width + spaceWidth, height + spaceHeight)
 	}
 
 }
