@@ -1,4 +1,4 @@
-package core
+package core.processors
 
 import java.awt.Color
 

@@ -1,5 +1,6 @@
 package core
 
+import core.processors.BinaryProcessor
 import java.awt.Color
 import java.awt.image.BufferedImage
 import java.io.File
