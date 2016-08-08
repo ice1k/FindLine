@@ -1,6 +1,6 @@
 package view
 
-import core.GraphProcessor
+import core.Graph
 import core.average
 import view.components.Frame666
 import view.components.ImagePanel
@@ -14,7 +14,7 @@ import javax.swing.filechooser.FileNameExtensionFilter
  * @author ice1000
  * Created by ice1000 on 16-8-6.
  */
-class GUI(title: String, var graph: GraphProcessor) {
+class GUI(title: String, var graph: Graph) {
 	val frame = Frame666(title)
 	val panel = ImagePanel(graph.image)
 
@@ -27,7 +27,7 @@ class GUI(title: String, var graph: GraphProcessor) {
 			chooser.fileSelectionMode = JFileChooser.FILES_ONLY
 			chooser.fileFilter = FileNameExtensionFilter("PNG Image", "png")
 			if (chooser.showOpenDialog(chooser) == JFileChooser.APPROVE_OPTION) {
-				graph = GraphProcessor(chooser.selectedFile)
+				graph = Graph(chooser.selectedFile)
 				setupFrame()
 			}
 		}

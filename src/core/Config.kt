@@ -7,6 +7,8 @@ package core
 
 /**
  * RGB
- * @see GraphProcessor
+ * @see Graph
  */
 var average = 200
+
+val deviation = 0.2

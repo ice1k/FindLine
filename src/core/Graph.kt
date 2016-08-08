@@ -10,7 +10,7 @@ import javax.imageio.ImageIO
  * @author ice1000
  * Created by ice1000 on 16-8-6.
  */
-class GraphProcessor(file: File) {
+class Graph(file: File) {
 	val image: BufferedImage
 	val cache: BufferedImage
 
