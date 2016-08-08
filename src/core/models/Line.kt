@@ -8,11 +8,17 @@ import core.deviation
  */
 class Line(val a: Double, val b: Double, val c: Double) {
 
-	operator fun get(x: Double, y: Double) = on(Point(x, y))
+	/**
+	 * is the point located on (x, y) belong to this line
+	 */
+	operator fun get(x: Double, y: Double) = on(x, y)
 
-	fun on(point: Point) =
-			Math.abs(bring(point)) < deviation
+	operator fun get(point: Point) =
+			get(point.x, point.y)
 
-	fun bring(point: Point) =
-			a * point.x + b * point.y + c
+	fun on(x: Double, y: Double) =
+			Math.abs(bring(x, y)) < deviation
+
+	fun bring(x: Double, y: Double) =
+			a * x + b * y + c
 }
