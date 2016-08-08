@@ -18,4 +18,9 @@ class Point(val x: Int, val y: Int) {
 	override fun toString(): String =
 			x.toString() + y.toString()
 
+	operator override fun equals(other: Any?): Boolean {
+		if (other == null) return false
+		if (other is Point) return x == other.x && y == other.y
+		return false
+	}
 }

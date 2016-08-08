@@ -8,6 +8,11 @@ import core.deviation
  */
 class Line(val a: Double, val b: Double, val c: Double) {
 
+//	constructor(x: Point, y: Point) {
+//		if (x == y)
+//		this
+//	}
+
 	/** is the point located on (x, y) belong to this line */
 	operator fun get(x: Int, y: Int) = on(x, y)
 
