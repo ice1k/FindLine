@@ -3,11 +3,9 @@ package core
 import core.models.Line
 import core.models.Point
 import core.processors.BinaryProcessor
-import utils.exceptions.LineNotFoundException
 import java.awt.Color
 import java.awt.image.BufferedImage
 import java.io.File
-import java.util.*
 import javax.imageio.ImageIO
 
 /**
@@ -22,8 +20,8 @@ class Graph(file: File) {
 	init {
 		image = ImageIO.read(file)
 		cache = ImageIO.read(file)
-		mark = Array(cache.height, {
-			Array(cache.width, { false })
+		mark = Array(cache.width, {
+			Array(cache.height, { false })
 		})
 		init()
 	}
@@ -37,26 +35,6 @@ class Graph(file: File) {
 		}
 
 	}
-
-	/**
-	 * please handle an exception
-	 */
-	fun findLine(x: Int, y: Int): List<Line> {
-		val lines = ArrayList<Line>()
-		if (!mark[x][y]) throw LineNotFoundException(x, y)
-//		deprecated
-//		var max = Max(x, y, -1.0)
-//		(-1..1).forEach { x ->
-//			(-1..1).forEach { y ->
-//				if (x == 0 && y == 0) return
-//				var p = Point(x, y)
-//
-//			}
-//		}
-		return lines
-	}
-
-	fun findLine(point: Point) = findLine(point.x, point.y)
 
 	/**
 	 * @param x x in image
