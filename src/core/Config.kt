@@ -11,4 +11,4 @@ package core
  */
 var average = 200
 
-val deviation = 0.2
+val deviation = 0.8

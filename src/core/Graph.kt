@@ -35,13 +35,14 @@ class Graph(file: File) {
 				mark[x][y] = this[x, y]
 			}
 		}
+
 	}
 
 	/**
 	 * please handle an exception
 	 */
-	fun findLine(x: Int, y: Int) {
-		var line = ArrayList<Line>()
+	fun findLine(x: Int, y: Int): List<Line> {
+		val lines = ArrayList<Line>()
 		if (!mark[x][y]) throw LineNotFoundException(x, y)
 //		deprecated
 //		var max = Max(x, y, -1.0)
@@ -52,6 +53,7 @@ class Graph(file: File) {
 //
 //			}
 //		}
+		return lines
 	}
 
 	fun findLine(point: Point) = findLine(point.x, point.y)
@@ -75,11 +77,20 @@ class Graph(file: File) {
 
 	operator fun get(point: Point) = this[point.x, point.y]
 
-	private fun isLine(x: Point, y: Point): Boolean {
-		// tOdO
+	data class Max(val x: Int, val y: Int, val length: Double)
+
+	/** 判断两点是否连通 */
+	operator fun Point.rangeTo(point: Point): Boolean {
+		val line = Line.fromPoint(this, point)
+		(Math.min(this.x, point.x)..Math.max(this.x, point.x)).forEach { x ->
+			if (!line[x.toDouble(), line.longitude(x)])
+				return false
+		}
+		(Math.min(this.y, point.y)..Math.max(this.y, point.y)).forEach { y ->
+			if (!line[y.toDouble(), line.latitude(y)])
+				return false
+		}
 		return true
 	}
-
-	data class Max(val x: Int, val y: Int, val length: Double)
 
 }
