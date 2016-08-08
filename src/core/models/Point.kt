@@ -23,4 +23,11 @@ class Point(val x: Int, val y: Int) {
 		if (other is Point) return x == other.x && y == other.y
 		return false
 	}
+
+	override fun hashCode(): Int{
+		var result = x
+		result = 31 * result + y
+		result = 31 * result + quadrant
+		return result
+	}
 }

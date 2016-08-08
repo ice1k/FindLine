@@ -1,6 +1,7 @@
 package core.models
 
 import core.deviation
+import utils.exceptions.FatalError
 
 /**
  * @author ice1000
@@ -8,10 +9,13 @@ import core.deviation
  */
 class Line(val a: Double, val b: Double, val c: Double) {
 
-//	constructor(x: Point, y: Point) {
-//		if (x == y)
-//		this
-//	}
+	companion object {
+		fun fromPoint(x: Point, y: Point): Line {
+			if (x == y) throw FatalError()
+//		    TODO
+			return Line(0.0, 0.0, 0.0)
+		}
+	}
 
 	/** is the point located on (x, y) belong to this line */
 	operator fun get(x: Int, y: Int) = on(x, y)

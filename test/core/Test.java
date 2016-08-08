@@ -13,8 +13,13 @@ public abstract class Test {
 	private class AssertionError extends Error {
 	}
 
+	/**
+	 * assertion
+	 * @param x one object
+	 * @param y another object
+	 */
 	protected void assertEqual(Object x, Object y) {
-		if (x != y) throw new AssertionError();
+		if (x != y && !x.equals(y)) throw new AssertionError();
 	}
 
 	protected abstract void run();
