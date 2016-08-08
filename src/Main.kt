@@ -1,4 +1,4 @@
-import core.Graph
+import core.GraphProcessor
 import view.GUI
 import java.io.File
 
@@ -9,5 +9,5 @@ import java.io.File
 
 
 fun main(args: Array<String>) {
-    GUI("Line by ice1000", Graph(File("test2.png")))
+	GUI("Line by ice1000", GraphProcessor(File("test.png")))
 }

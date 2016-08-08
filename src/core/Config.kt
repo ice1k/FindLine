@@ -7,6 +7,6 @@ package core
 
 /**
  * RGB
- * @see Graph
+ * @see GraphProcessor
  */
-val average = 200
+var average = 200

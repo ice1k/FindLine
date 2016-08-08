@@ -10,12 +10,12 @@ import javax.swing.JPanel
  */
 class ImagePanel(var image: Image) : JPanel() {
 
-    override fun paintComponent(g: Graphics?) {
-        g?.drawImage(image, 0, 0, this)
-    }
+	override fun paintComponent(g: Graphics?) {
+		g?.drawImage(image, 0, 0, this)
+	}
 
-    fun change(image: Image) {
-        this.image = image
-        repaint()
-    }
+	fun change(image: Image) {
+		this.image = image
+		repaint()
+	}
 }

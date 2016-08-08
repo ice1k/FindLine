@@ -9,6 +9,10 @@ Working in progress.
 
 Use IntelliJ IDEA with Kotlin and Groovy Plugin (which are very easy to install), clone and open, that is all.
 
+# Progress
+
+- [X] Binary Processing
+
 # Author
 
 [ice1000](https://github.com/ice1000)
