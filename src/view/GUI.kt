@@ -1,7 +1,7 @@
 package view
 
-import core.Graph
 import core.average
+import core.models.Graph
 import view.components.Frame666
 import view.components.ImagePanel
 import java.awt.BorderLayout
@@ -43,14 +43,10 @@ class GUI(title: String, var graph: Graph) {
 		}
 
 		val plusButton = JButton("+")
-		plusButton.addActionListener { action ->
-			manageAverage(10)
-		}
+		plusButton.addActionListener { action -> manageAverage(5) }
 		frame.add(plusButton, BorderLayout.WEST)
 		val minusButton = JButton("-")
-		minusButton.addActionListener { action ->
-			manageAverage(-10)
-		}
+		minusButton.addActionListener { action -> manageAverage(-5) }
 		frame.add(minusButton, BorderLayout.EAST)
 		setupFrame()
 		frame.defaultCloseOperation = JFrame.EXIT_ON_CLOSE

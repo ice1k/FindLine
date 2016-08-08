@@ -1,4 +1,4 @@
-import core.Graph
+import core.models.Graph
 import view.GUI
 import java.io.File
 

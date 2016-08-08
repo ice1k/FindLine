@@ -1,39 +1,27 @@
 package core.models
 
 import core.deviation
-import utils.exceptions.FatalError
 
 /**
  * @author ice1000
  * Created by ice1000 on 2016/8/8.
  */
 open class Line(
-		private val a: Double,
-		private val b: Double,
-		private val c: Double) {
+		private val a: Int,
+		private val b: Int,
+		private val c: Int) {
 
-	companion object {
-		fun fromPoint(x: Point, y: Point): Line {
-			if (x == y) throw FatalError()
-//			TODO
-			return Line(0.0, 0.0, 0.0)
-		}
-	}
+	/** 通过两点构造一条直线 */
+	constructor(x: Point, y: Point) : this(y.y - x.y, x.x - y.x, y.x * x.y - x.x * y.y)
 
-	/** 判断一个点在不在方程上 */
+	/** 判断一个点是否在直线上 */
 	operator fun get(x: Int, y: Int) = Math.abs(bring(x, y)) < deviation
 
-	/** 判断一个点在不在方程上 */
-	operator fun get(x: Double, y: Double) = Math.abs(bring(x, y)) < deviation
-
-	/** 判断一个点在不在方程上 */
+	/** @see get */
 	operator fun get(point: Point) = get(point.x, point.y)
 
 	/** 将一个点带入直线方程 */
 	fun bring(x: Int, y: Int) = a * x + b * y + c
-
-	/** 将一个点带入直线方程 */
-	fun bring(x: Double, y: Double) = a * x + b * y + c
 
 	/** 已知x值求直线上的y值 */
 	fun longitude(x: Int) = (a * x + c) * -1.0 / b

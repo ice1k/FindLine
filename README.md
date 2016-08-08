@@ -14,12 +14,16 @@ Use IntelliJ IDEA with Kotlin and Groovy Plugin (which are very easy to install)
 Module|Language
 :---|---:
 Tests|Java
-Source|Kotlin
-Package-Info|Java
+Documents|Java
+Core (major)|Kotlin
 
 # Progress
 
 - [X] Binary Processing
+- [X] Point Utils
+- [X] Line Utils
+- [ ] Find Lines In A Picture
+- [ ] Distinguishing Triangular
 
 # Author
 
