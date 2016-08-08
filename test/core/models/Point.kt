@@ -6,8 +6,8 @@ package core.models
  */
 
 fun main(args: Array<String>) {
-	println(Point(1.0, 1.0).quadrant)
-	println(Point(-1.0, 1.0).quadrant)
-	println(Point(-1.0, -1.0).quadrant)
-	println(Point(1.0, -1.0).quadrant)
+	println(Point(1, 1).quadrant)
+	println(Point(-1, 1).quadrant)
+	println(Point(-1, -1).quadrant)
+	println(Point(1, -1).quadrant)
 }

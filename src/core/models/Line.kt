@@ -8,17 +8,14 @@ import core.deviation
  */
 class Line(val a: Double, val b: Double, val c: Double) {
 
-	/**
-	 * is the point located on (x, y) belong to this line
-	 */
-	operator fun get(x: Double, y: Double) = on(x, y)
+	/** is the point located on (x, y) belong to this line */
+	operator fun get(x: Int, y: Int) = on(x, y)
 
-	operator fun get(point: Point) =
-			get(point.x, point.y)
+	operator fun get(point: Point) = get(point.x, point.y)
 
-	fun on(x: Double, y: Double) =
-			Math.abs(bring(x, y)) < deviation
+	/** 判断一个点在不在方程上 */
+	fun on(x: Int, y: Int) = Math.abs(bring(x, y)) < deviation
 
-	fun bring(x: Double, y: Double) =
-			a * x + b * y + c
+	/** 将一个点带入直线方程 */
+	fun bring(x: Int, y: Int) = a * x + b * y + c
 }
