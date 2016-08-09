@@ -26,7 +26,7 @@ class Point(val x: Int, val y: Int, internal var getColor: (Int, Int) -> Boolean
 			if (getColor(x, line.longitude(x).toInt())) return false
 		}
 		(Math.min(this.y, point.y)..Math.max(this.y, point.y)).forEach { y ->
-			if (getColor(y, line.latitude(y).toInt())) return false
+			if (getColor(line.latitude(y).toInt(), y)) return false
 		}
 		return true
 	}
