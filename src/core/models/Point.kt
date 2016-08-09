@@ -23,10 +23,10 @@ class Point(val x: Int, val y: Int, internal var getColor: (Int, Int) -> Boolean
 	infix fun connect(point: Point): Boolean {
 		val line = Line(this, point)
 		(Math.min(this.x, point.x)..Math.max(this.x, point.x)).forEach { x ->
-			if (getColor(x, line.longitude(x).toInt())) return false
+			if (!getColor(x, line.f(x).toInt())) return false
 		}
 		(Math.min(this.y, point.y)..Math.max(this.y, point.y)).forEach { y ->
-			if (getColor(line.latitude(y).toInt(), y)) return false
+			if (!getColor(line.fa(y).toInt(), y)) return false
 		}
 		return true
 	}

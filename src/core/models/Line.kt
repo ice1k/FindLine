@@ -1,15 +1,19 @@
 package core.models
 
 import core.deviation
+import java.util.*
 
 /**
  * @author ice1000
  * Created by ice1000 on 2016/8/8.
+ *
+ * 通过两点构造一条直线
  */
-open class Line(private val a: Int, private val b: Int, private val c: Int) {
+open class Line(val start: Point, val end: Point) {
 
-	/** 通过两点构造一条直线 */
-	constructor(x: Point, y: Point) : this(y.y - x.y, x.x - y.x, y.x * x.y - x.x * y.y)
+	private val a = end.y - start.y
+	private val b = start.x - end.x
+	private val c = end.x * start.y - start.x * end.y
 
 	/** 判断一个点是否在直线上 */
 	operator fun get(x: Int, y: Int) = Math.abs(a * x + b * y + c) < deviation
@@ -18,10 +22,20 @@ open class Line(private val a: Int, private val b: Int, private val c: Int) {
 	operator fun get(point: Point) = get(point.x, point.y)
 
 	/** 已知x值求直线上的y值 */
-	fun longitude(x: Int) = (a * x + c) * -1.0 / b
+	fun f(x: Int) = (a * x + c) * -1.0 / b
 
 	/** 已知y值求直线上的x值 */
-	fun latitude(y: Int) = (b * y + c) * -1.0 / a
+	fun fa(y: Int) = (b * y + c) * -1.0 / a
+
+	/** 获取所有的点 */
+	fun getAllPoints(): HashSet<Point> {
+		val set = HashSet<Point>()
+		set.add(start)
+		set.add(end)
+		(Math.min(start.x, end.x)..Math.max(start.x, end.x)).forEach { x -> set.add(Point(x, f(x).toInt())) }
+		(Math.min(start.y, end.y)..Math.max(start.y, end.y)).forEach { y -> set.add(Point(fa(y).toInt(), y)) }
+		return set
+	}
 
 	override operator fun equals(other: Any?): Boolean {
 		if (other == null) return false
