@@ -41,13 +41,20 @@ class Graph(file: File) {
 		}
 	}
 
-	operator fun plusAssign(point: Point) {
-		if (pointCache connect point) LogConsole.log("Yes!! Connected!!")
-		else LogConsole.log("Not connected!!")
+	/**
+	 * @param point send a clicked point
+	 * @return connected
+	 */
+	fun send(point: Point): Boolean {
+		val ret = pointCache connect point
+//			LogConsole.log("Yes!! Connected!!")
+//		else
+//			LogConsole.log("Not connected!!")
 		val line = Line(pointCache, point)
 		line.getAllPoints().forEach { p -> image.setRGB(p.x, p.y, Color.BLUE.rgb) }
 		pointCache = point
 		pointCache.getColor = getColor
+		return ret
 	}
 
 	/**

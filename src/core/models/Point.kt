@@ -22,12 +22,7 @@ class Point(val x: Int, val y: Int, internal var getColor: (Int, Int) -> Boolean
 	/** 判断两点是否连通 (｡ŏ﹏ŏ) */
 	infix fun connect(point: Point): Boolean {
 		val line = Line(this, point)
-		(Math.min(this.x, point.x)..Math.max(this.x, point.x)).forEach { x ->
-			if (!getColor(x, line.f(x).toInt())) return false
-		}
-		(Math.min(this.y, point.y)..Math.max(this.y, point.y)).forEach { y ->
-			if (!getColor(line.fa(y).toInt(), y)) return false
-		}
+		line.getAllPoints().forEach { p -> if (!getColor(p.x, p.y)) return false }
 		return true
 	}
 

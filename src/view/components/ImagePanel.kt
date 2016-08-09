@@ -2,10 +2,10 @@ package view.components
 
 import core.models.Graph
 import core.models.Point
-import utils.debug.LogConsole
 import java.awt.Graphics
 import java.awt.event.MouseEvent
 import java.awt.event.MouseListener
+import javax.swing.JOptionPane
 import javax.swing.JPanel
 
 /**
@@ -22,9 +22,11 @@ class ImagePanel(var graph: Graph) : JPanel() {
 			override fun mousePressed(e: MouseEvent) = Unit
 			override fun mouseClicked(e: MouseEvent) {
 				graph.init()
-				graph += Point(e.x, e.y)
+				val connected = graph.send(Point(e.x, e.y))
 				repaint()
-				LogConsole.log("e.x = ${e.x}, e.y = ${e.y}")
+				JOptionPane.showMessageDialog(null, if (connected) "Connected" else "Not Connected",
+						"Information", JOptionPane.INFORMATION_MESSAGE)
+//				LogConsole.log("e.x = ${e.x}, e.y = ${e.y}")
 			}
 		})
 	}
