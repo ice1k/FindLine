@@ -4,8 +4,7 @@ package core.models
  * @author ice1000
  * Created by ice1000 on 2016/8/8.
  */
-class Point(val x: Int, val y: Int,
-            internal var getColor: (Int, Int) -> Boolean) {
+class Point(val x: Int, val y: Int, internal var getColor: (Int, Int) -> Boolean) {
 
 	constructor(x: Int, y: Int): this(x, y, { b1, b2 -> false })
 
@@ -21,7 +20,7 @@ class Point(val x: Int, val y: Int,
 	override fun toString(): String = x.toString() + y.toString()
 
 	/** 判断两点是否连通 (｡ŏ﹏ŏ) */
-	infix fun con(point: Point): Boolean {
+	infix fun connect(point: Point): Boolean {
 		val line = Line(this, point)
 		(Math.min(this.x, point.x)..Math.max(this.x, point.x)).forEach { x ->
 			if (getColor(x, line.longitude(x).toInt())) return false

@@ -11,9 +11,7 @@ object BinaryProcessor {
 
 	fun getGray(rgb: Int): Int {
 		val color = Color(rgb)
-		return (color.blue +
-				color.green +
-				color.red) / 3
+		return (color.blue + color.green + color.red) / 3
 	}
 
 }

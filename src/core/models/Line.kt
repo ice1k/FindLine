@@ -6,22 +6,16 @@ import core.deviation
  * @author ice1000
  * Created by ice1000 on 2016/8/8.
  */
-open class Line(
-		private val a: Int,
-		private val b: Int,
-		private val c: Int) {
+open class Line(private val a: Int, private val b: Int, private val c: Int) {
 
 	/** 通过两点构造一条直线 */
 	constructor(x: Point, y: Point) : this(y.y - x.y, x.x - y.x, y.x * x.y - x.x * y.y)
 
 	/** 判断一个点是否在直线上 */
-	operator fun get(x: Int, y: Int) = Math.abs(bring(x, y)) < deviation
+	operator fun get(x: Int, y: Int) = Math.abs(a * x + b * y + c) < deviation
 
-	/** @see get */
+	/** @see get(Int, Int) */
 	operator fun get(point: Point) = get(point.x, point.y)
-
-	/** 将一个点带入直线方程 */
-	fun bring(x: Int, y: Int) = a * x + b * y + c
 
 	/** 已知x值求直线上的y值 */
 	fun longitude(x: Int) = (a * x + c) * -1.0 / b
@@ -31,7 +25,7 @@ open class Line(
 
 	override operator fun equals(other: Any?): Boolean {
 		if (other == null) return false
-		if (other is Line) return a == other.a && b == other.b && c == other.b
+		if (other is Line) return a / other.a == b / other.b && b / other.b == c / other.c
 		return false
 	}
 

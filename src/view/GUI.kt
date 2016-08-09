@@ -16,7 +16,7 @@ import javax.swing.filechooser.FileNameExtensionFilter
  */
 class GUI(title: String, var graph: Graph) {
 	val frame = Frame666(title)
-	val panel = ImagePanel(graph.image)
+	val panel = ImagePanel(graph)
 
 	init {
 		frame.layout = BorderLayout()
@@ -38,7 +38,6 @@ class GUI(title: String, var graph: Graph) {
 			if (average > 0b11111111) average = 0b11111111
 			if (average < 0b0) average = 0b0
 			println(average)
-			graph.init()
 			setupFrame()
 		}
 
@@ -56,6 +55,6 @@ class GUI(title: String, var graph: Graph) {
 
 	private fun setupFrame() {
 		frame.setupSize(graph.image.width, graph.image.height)
-		panel.change(graph.image)
+		panel.change(graph)
 	}
 }

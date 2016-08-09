@@ -16,8 +16,6 @@ class Graph(file: File) {
 	val cache: BufferedImage
 	val mark: Array<Array<Boolean>>
 
-	var refresh: () -> Unit = { }
-
 	init {
 		image = ImageIO.read(file)
 		cache = ImageIO.read(file)
@@ -34,12 +32,12 @@ class Graph(file: File) {
 		}
 	}
 
-	/** connected */
+	/** connect */
 	fun isConnected(x: Point, y: Point): Boolean {
 		val lambda: (Int, Int) -> Boolean = { x, y -> this@Graph[x, y] }
 		x.getColor = lambda
 		y.getColor = lambda
-		return x con y
+		return x connect y
 	}
 
 	/**
