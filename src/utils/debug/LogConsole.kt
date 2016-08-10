@@ -5,5 +5,7 @@ package utils.debug
  * Created by ice1000 on 2016/8/9.
  */
 object LogConsole {
-	fun log(string: String) = println(string)
+	fun log(string: String) {
+		println(string)
+	}
 }

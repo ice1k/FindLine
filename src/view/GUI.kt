@@ -28,7 +28,7 @@ class GUI(title: String, var graph: Graph) {
 
 			val chooser = JFileChooser()
 			chooser.fileSelectionMode = JFileChooser.FILES_ONLY
-			chooser.fileFilter = FileNameExtensionFilter("PNG Image", "png")
+			chooser.fileFilter = FileNameExtensionFilter("Supported Image Format", "png", "jpg")
 
 			if (chooser.showOpenDialog(chooser) == JFileChooser.APPROVE_OPTION) {
 				graph = Graph(chooser.selectedFile)
@@ -45,11 +45,11 @@ class GUI(title: String, var graph: Graph) {
 			setupFrame()
 		}
 
-		val plusButton = JButton("+")
+		val plusButton = JButton("+\n+\n+")
 		plusButton.addActionListener { action -> manageAverage(5) }
 		frame.add(plusButton, BorderLayout.WEST)
 
-		val minusButton = JButton("-")
+		val minusButton = JButton("-\n-\n-")
 		minusButton.addActionListener { action -> manageAverage(-5) }
 		frame.add(minusButton, BorderLayout.EAST)
 

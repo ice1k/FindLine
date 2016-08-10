@@ -26,7 +26,6 @@ class ImagePanel(var graph: Graph) : JPanel() {
 				repaint()
 				JOptionPane.showMessageDialog(null, if (connected) "Connected" else "Not Connected",
 						"Information", JOptionPane.INFORMATION_MESSAGE)
-//				LogConsole.log("e.x = ${e.x}, e.y = ${e.y}")
 			}
 		})
 	}

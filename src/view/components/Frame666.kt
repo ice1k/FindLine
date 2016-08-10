@@ -17,15 +17,11 @@ class Frame666(title: String) : JFrame(title) {
 	override fun add(comp: Component, constraints: Any?) {
 		super.add(comp, constraints)
 		when (constraints) {
-			BorderLayout.NORTH, BorderLayout.SOUTH ->
-				spaceHeight += comp.maximumSize.height
-			BorderLayout.EAST, BorderLayout.WEST ->
-				spaceWidth += comp.maximumSize.width
+			BorderLayout.NORTH, BorderLayout.SOUTH -> spaceHeight += comp.maximumSize.height
+			BorderLayout.EAST, BorderLayout.WEST -> spaceWidth += comp.maximumSize.width
 		}
 	}
 
-	fun setupSize(width: Int, height: Int) {
-		setSize(width + spaceWidth, height + spaceHeight)
-	}
+	fun setupSize(width: Int, height: Int) = setSize(width + spaceWidth, height + spaceHeight)
 
 }
