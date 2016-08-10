@@ -12,10 +12,6 @@ import java.awt.image.BufferedImage
 abstract class Area(val origin: BufferedImage) {
 	val image = BufferedImage(origin.width, origin.height, origin.type)
 
-	init {
-		init()
-	}
-
 	fun drawLine(line: Line) = line.set.forEach { p ->
 		image.setRGB(p.x, p.y, if (this[p.x, p.y]) Color.BLUE.rgb else Color.ORANGE.rgb)
 	}

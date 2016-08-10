@@ -1,7 +1,7 @@
 package view.components
 
-import finder.LineFinder
 import core.models.Point
+import finder.LineFinder
 import java.awt.Graphics
 import java.awt.event.MouseEvent
 import java.awt.event.MouseListener
@@ -17,6 +17,7 @@ class ImagePanel(var graph: LineFinder) : JPanel() {
 	var point = Point(0, 0)
 
 	init {
+		graph.init()
 		addMouseListener(object : MouseListener {
 			override fun mouseEntered(e: MouseEvent) = Unit
 			override fun mouseReleased(e: MouseEvent) = Unit
