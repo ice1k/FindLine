@@ -1,18 +1,3 @@
-import dsl.Framework
+import main.Main
 
-/**
- * @author ice1000
- * Created by ice1000 on 2016/8/10.
- */
-class Groovy extends Framework {
-
-	@Override
-	String getPath() {
-		return ""
-	}
-
-	@Override
-	void init() {
-
-	}
-}
+def main = new Main()
