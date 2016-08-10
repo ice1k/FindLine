@@ -1,6 +1,6 @@
 package view.components
 
-import core.finder.LineFinder
+import finder.LineFinder
 import core.models.Point
 import java.awt.Graphics
 import java.awt.event.MouseEvent

@@ -1,10 +1,11 @@
 package view
 
 import core.average
-import core.finder.LineFinder
+import finder.LineFinder
 import view.components.Frame666
 import view.components.ImagePanel
 import java.awt.BorderLayout
+import javax.imageio.ImageIO
 import javax.swing.JButton
 import javax.swing.JFileChooser
 import javax.swing.JFrame
@@ -31,7 +32,7 @@ open class GUI(title: String, var graph: LineFinder) {
 			chooser.fileFilter = FileNameExtensionFilter("Supported Image Format", "png", "jpg")
 
 			if (chooser.showOpenDialog(chooser) == JFileChooser.APPROVE_OPTION) {
-				graph = LineFinder(chooser.selectedFile)
+				graph = LineFinder(ImageIO.read(chooser.selectedFile)!!)
 				setupFrame()
 			}
 		}

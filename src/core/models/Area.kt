@@ -4,22 +4,15 @@ import core.average
 import utils.Binarization
 import java.awt.Color
 import java.awt.image.BufferedImage
-import java.io.File
-import javax.imageio.ImageIO
 
 /**
  * @author ice1000
  * Created by ice1000 on 2016/8/10.
  */
-abstract class Area(file: File) {
-	val image: BufferedImage
-	val origin: BufferedImage
-	val mark: Array<Array<Boolean>>
+abstract class Area(val origin: BufferedImage) {
+	val image = BufferedImage(origin.width, origin.height, origin.type)
 
 	init {
-		image = ImageIO.read(file)
-		origin = ImageIO.read(file)
-		mark = Array(origin.width, { Array(origin.height, { false }) })
 		init()
 	}
 
@@ -34,8 +27,12 @@ abstract class Area(file: File) {
 		(0..image.width - 1).forEach { x ->
 			(0..image.height - 1).forEach { y ->
 				image.setRGB(x, y, if (this[x, y]) Color.WHITE.rgb else Color.BLACK.rgb)
-				mark[x][y] = this[x, y]
 			}
 		}
+	}
+
+	protected infix fun Point.connect(point: Point): Boolean {
+		Line(this, point).allPoints.forEach { p -> if (this@Area[p.x, p.y]) return false }
+		return true
 	}
 }

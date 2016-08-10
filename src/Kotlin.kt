@@ -1,6 +1,7 @@
-import core.finder.LineFinder
+import finder.LineFinder
 import view.GUI
 import java.io.File
+import javax.imageio.ImageIO
 
 /**
  * @author ice1000
@@ -8,5 +9,5 @@ import java.io.File
  */
 
 fun main(args: Array<String>) {
-	GUI("Line by ice1000", LineFinder(File("test.png")))
+	GUI("Line by ice1000", LineFinder(ImageIO.read(File("test.png"))))
 }

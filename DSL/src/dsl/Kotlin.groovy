@@ -1,7 +1,9 @@
 package dsl
 
-import core.finder.LineFinder
+import finder.LineFinder
 import view.GUI
+
+import javax.imageio.ImageIO
 
 /**
  * @author ice1000
@@ -14,7 +16,7 @@ abstract class Kotlin extends GUI {
 	abstract String getPath();
 
 	protected Kotlin() {
-		this("Kotlin by ice1000", new LineFinder(new File(getPath())))
+		this("Kotlin by ice1000", new LineFinder(ImageIO.read(new File(getPath()))))
 	}
 
 	private Kotlin(String title, LineFinder graph) {
