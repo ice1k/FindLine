@@ -8,10 +8,6 @@ import core.Test;
  */
 public class PointTest extends Test {
 
-	public static void main(String[] args) {
-		new PointTest();
-	}
-
 	@Override
 	protected void run() {
 		assertEqual(new Point(1, 1).getQuadrant(), 1);
