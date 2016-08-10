@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage
  * Created by ice1000 on 16-8-6.
  */
 open class LineFinder(image: BufferedImage): Area(image), Finder {
-	var pointCache = Point(0, 0)
+	protected var pointCache = Point(1, 2)
 
 	/**
 	 * @param point send a clicked point

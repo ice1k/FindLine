@@ -20,7 +20,8 @@ Module|Language
 :---|---:
 Tests|Java
 Documents|Java
-Core (major)|Kotlin
+Core|Kotlin
+GUI|Kotlin
 DSL|Groovy
 
 # Progress

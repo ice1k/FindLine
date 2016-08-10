@@ -8,20 +8,20 @@ import java.util.*
  *
  * 通过两点构造一条直线
  */
-open class Line(start: Point, end: Point) {
+open class Line(one: Point, two: Point) {
 
-	private val a = end.y - start.y
-	private val b = start.x - end.x
-	private val c = end.x * start.y - start.x * end.y
+	private val a = two.y - one.y
+	private val b = one.x - two.x
+	private val c = two.x * one.y - one.x * two.y
 	val allPoints = HashSet<Point>()
 
 	init {
-		(Math.min(start.x, end.x)..Math.max(start.x, end.x)).forEach { x -> allPoints.add(Point(x, x2y(x))) }
-		(Math.min(start.y, end.y)..Math.max(start.y, end.y)).forEach { y -> allPoints.add(Point(y2x(y), y)) }
+		(Math.min(one.x, two.x)..Math.max(one.x, two.x)).forEach { x -> if (b > 0) allPoints.add(Point(x, x2y(x))) }
+		(Math.min(one.y, two.y)..Math.max(one.y, two.y)).forEach { y -> if (a > 0) allPoints.add(Point(y2x(y), y)) }
 	}
 
-	fun x2y(x: Int) = (a * x + c) * -1 / b
-	fun y2x(y: Int) = (b * y + c) * -1 / a
+	fun x2y(x: Int) = -(a * x + c) / b
+	fun y2x(y: Int) = -(b * y + c) / a
 
 	override operator fun equals(other: Any?): Boolean {
 		if (other == null || other !is Line) return false
