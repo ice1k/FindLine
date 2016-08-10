@@ -9,30 +9,22 @@ import java.util.*
  *
  * 通过两点构造一条直线
  */
-open class Line(val start: Point, val end: Point) {
+open class Line(start: Point, end: Point) {
 
 	private val a = end.y - start.y
 	private val b = start.x - end.x
 	private val c = end.x * start.y - start.x * end.y
+	val allPoints = HashSet<Point>()
 
-	/** 判断一个点是否在直线上 */
-	operator fun get(x: Int, y: Int) = Math.abs(a * x + b * y + c) < deviation
-
-	operator fun get(point: Point) = get(point.x, point.y)
-
-	/** 已知x值求直线上的y值 */
-	fun x2y(x: Int) = (a * x + c) * -1.0 / b
-
-	/** 已知y值求直线上的x值 */
-	fun y2x(y: Int) = (b * y + c) * -1.0 / a
-
-	/** 获取所有的点 */
-	fun allPoints(): HashSet<Point> {
-		val set = HashSet<Point>()
-		(Math.min(start.x, end.x)..Math.max(start.x, end.x)).forEach { x -> set.add(Point(x, x2y(x).toInt())) }
-		(Math.min(start.y, end.y)..Math.max(start.y, end.y)).forEach { y -> set.add(Point(y2x(y).toInt(), y)) }
-		return set
+	init {
+		(Math.min(start.x, end.x)..Math.max(start.x, end.x)).forEach { x -> allPoints.add(Point(x, x2y(x))) }
+		(Math.min(start.y, end.y)..Math.max(start.y, end.y)).forEach { y -> allPoints.add(Point(y2x(y), y)) }
 	}
+
+	operator fun get(x: Int, y: Int) = Math.abs(a * x + b * y + c) < deviation
+	operator fun get(point: Point) = get(point.x, point.y)
+	fun x2y(x: Int) = (a * x + c) * -1 / b
+	fun y2x(y: Int) = (b * y + c) * -1 / a
 
 	override operator fun equals(other: Any?): Boolean {
 		if (other == null) return false

@@ -14,6 +14,8 @@ import javax.swing.JPanel
  */
 class ImagePanel(var graph: Graph) : JPanel() {
 
+	var point = Point(0, 0)
+
 	init {
 		addMouseListener(object : MouseListener {
 			override fun mouseEntered(e: MouseEvent) = Unit
@@ -22,10 +24,11 @@ class ImagePanel(var graph: Graph) : JPanel() {
 			override fun mousePressed(e: MouseEvent) = Unit
 			override fun mouseClicked(e: MouseEvent) {
 				graph.init()
-				val connected = graph.send(Point(e.x, e.y))
+				point = Point(e.x, e.y)
+				val connected = graph.send(point)
 				repaint()
-				JOptionPane.showMessageDialog(null, if (connected) "Connected" else "Not Connected",
-						"Information", JOptionPane.INFORMATION_MESSAGE)
+				JOptionPane.showMessageDialog(null, "${if (connected) "Connected" else "Not Connected"} , " +
+						"ended on $point", "Information", JOptionPane.INFORMATION_MESSAGE)
 			}
 		})
 	}
