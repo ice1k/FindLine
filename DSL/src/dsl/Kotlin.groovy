@@ -1,6 +1,6 @@
 package dsl
 
-import core.finder.Graph
+import core.finder.LineFinder
 import view.GUI
 
 /**
@@ -14,10 +14,10 @@ abstract class Kotlin extends GUI {
 	abstract String getPath();
 
 	protected Kotlin() {
-		this("Kotlin by ice1000", new Graph(new File(getPath())))
+		this("Kotlin by ice1000", new LineFinder(new File(getPath())))
 	}
 
-	private Kotlin(String title, Graph graph) {
+	private Kotlin(String title, LineFinder graph) {
 		super(title, graph)
 		init()
 	}

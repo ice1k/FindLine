@@ -1,4 +1,4 @@
-import core.finder.Graph
+import core.finder.LineFinder
 import view.GUI
 import java.io.File
 
@@ -8,5 +8,5 @@ import java.io.File
  */
 
 fun main(args: Array<String>) {
-	GUI("Line by ice1000", Graph(File("test.png")))
+	GUI("Line by ice1000", LineFinder(File("test.png")))
 }

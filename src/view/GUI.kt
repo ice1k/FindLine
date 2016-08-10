@@ -1,7 +1,7 @@
 package view
 
 import core.average
-import core.finder.Graph
+import core.finder.LineFinder
 import view.components.Frame666
 import view.components.ImagePanel
 import java.awt.BorderLayout
@@ -14,7 +14,7 @@ import javax.swing.filechooser.FileNameExtensionFilter
  * @author ice1000
  * Created by ice1000 on 16-8-6.
  */
-open class GUI(title: String, var graph: Graph) {
+open class GUI(title: String, var graph: LineFinder) {
 	val frame = Frame666(title)
 	val panel = ImagePanel(graph)
 
@@ -31,7 +31,7 @@ open class GUI(title: String, var graph: Graph) {
 			chooser.fileFilter = FileNameExtensionFilter("Supported Image Format", "png", "jpg")
 
 			if (chooser.showOpenDialog(chooser) == JFileChooser.APPROVE_OPTION) {
-				graph = Graph(chooser.selectedFile)
+				graph = LineFinder(chooser.selectedFile)
 				setupFrame()
 			}
 		}

@@ -30,5 +30,12 @@ abstract class Area(file: File) {
 	/** @return True is white, False is black */
 	operator fun get(x: Int, y: Int) = Binarization.gray(origin.getRGB(x, y)) > average
 
-	abstract fun init()
+	fun init() {
+		(0..image.width - 1).forEach { x ->
+			(0..image.height - 1).forEach { y ->
+				image.setRGB(x, y, if (this[x, y]) Color.WHITE.rgb else Color.BLACK.rgb)
+				mark[x][y] = this[x, y]
+			}
+		}
+	}
 }
