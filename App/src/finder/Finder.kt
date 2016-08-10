@@ -1,4 +1,4 @@
-package core.finder
+package finder
 
 import core.models.Point
 

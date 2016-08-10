@@ -1,4 +1,4 @@
-package core.finder.searcher
+package searcher
 
 /**
  * @author ice1000

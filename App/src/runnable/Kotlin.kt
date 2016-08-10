@@ -1,3 +1,5 @@
+package runnable
+
 import finder.LineFinder
 import view.GUI
 import java.io.File
