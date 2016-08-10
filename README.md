@@ -16,6 +16,7 @@ Module|Language
 Tests|Java
 Documents|Java
 Core (major)|Kotlin
+DSL|Groovy
 
 # Progress
 
@@ -24,6 +25,7 @@ Core (major)|Kotlin
 - [X] Line Utils
 - [ ] Find Lines In A Picture
 - [ ] Distinguishing Triangular
+- [ ] DSL to use this library easily
 
 # Author
 
