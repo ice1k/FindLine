@@ -1,8 +1,9 @@
 <component name="ArtifactManager">
-  <artifact name="JAR">
-    <output-path>$PROJECT_DIR$/jar/JAR</output-path>
+  <artifact name="App">
+    <output-path>$PROJECT_DIR$/jar/App</output-path>
     <root id="root">
-      <element id="archive" name="FindLine.jar">
+      <element id="archive" name="App.jar">
+        <element id="module-output" name="App" />
         <element id="module-output" name="FindLine" />
       </element>
       <element id="library" level="project" name="KotlinJavaRuntime" />
