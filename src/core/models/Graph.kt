@@ -16,7 +16,6 @@ class Graph(file: File) {
 	val image: BufferedImage
 	val cache: BufferedImage
 	val mark: Array<Array<Boolean>>
-
 	var pointCache = Point(0, 0)
 
 	init {
@@ -30,7 +29,7 @@ class Graph(file: File) {
 	fun init() {
 		(0..image.width - 1).forEach { x ->
 			(0..image.height - 1).forEach { y ->
-				image.setRGB(x, y, color(x, y))
+				image.setRGB(x, y, if (this[x, y]) Color.WHITE.rgb else Color.BLACK.rgb)
 				mark[x][y] = this[x, y]
 			}
 		}
@@ -42,27 +41,23 @@ class Graph(file: File) {
 	 */
 	fun send(point: Point): Boolean {
 		val ret = pointCache connect point
-		val line = Line(pointCache, point)
-		line.getAllPoints().forEach { p -> image.setRGB(p.x, p.y, Color.BLUE.rgb) }
+		drawLine(Line(pointCache, point))
 		pointCache = point
 		return ret
 	}
 
+	fun drawLine(line: Line) {
+		line.allPoints().forEach { p ->
+			image.setRGB(p.x, p.y, if (this[p.x, p.y]) Color.BLUE.rgb else Color.ORANGE.rgb)
+		}
+	}
+
 	/** 判断两点是否连通 (｡ŏ﹏ŏ) */
-	infix fun Point.connect(point: Point): Boolean {
-		val line = Line(this, point)
-		line.getAllPoints().forEach { p -> if (!this@Graph[p.x, p.y]) return false }
+	private infix fun Point.connect(point: Point): Boolean {
+		Line(this, point).allPoints().forEach { p -> if (this@Graph[p.x, p.y]) return false }
 		return true
 	}
 
-	/**
-	 * @param x pointCache in image
-	 * @param y y in image
-	 * @return black or white
-	 */
-	private fun color(x: Int, y: Int) = if (this[x, y]) Color.WHITE.rgb else Color.BLACK.rgb
-
-	/** @return True is black, False is white */
+	/** @return True is white, False is black */
 	operator fun get(x: Int, y: Int) = Binarization.gray(cache.getRGB(x, y)) > average
-
 }

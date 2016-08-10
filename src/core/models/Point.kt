@@ -4,9 +4,7 @@ package core.models
  * @author ice1000
  * Created by ice1000 on 2016/8/8.
  */
-class Point(val x: Int, val y: Int, internal var getColor: (Int, Int) -> Boolean) {
-
-	constructor(x: Int, y: Int): this(x, y, { b1, b2 -> false })
+data class Point(val x: Int, val y: Int) {
 
 	var quadrant = 0
 
@@ -17,7 +15,7 @@ class Point(val x: Int, val y: Int, internal var getColor: (Int, Int) -> Boolean
 		if (quadrant == 5) quadrant = 3
 	}
 
-	override fun toString(): String = x.toString() + y.toString()
+	override fun toString() = "($x, $y)"
 
 	operator override fun equals(other: Any?): Boolean {
 		if (other == null) return false
