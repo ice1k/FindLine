@@ -1,6 +1,5 @@
 package core.models
 
-import core.deviation
 import java.util.*
 
 /**
@@ -21,8 +20,6 @@ open class Line(start: Point, end: Point) {
 		(Math.min(start.y, end.y)..Math.max(start.y, end.y)).forEach { y -> allPoints.add(Point(y2x(y), y)) }
 	}
 
-	operator fun get(x: Int, y: Int) = Math.abs(a * x + b * y + c) < deviation
-	operator fun get(point: Point) = get(point.x, point.y)
 	fun x2y(x: Int) = (a * x + c) * -1 / b
 	fun y2x(y: Int) = (b * y + c) * -1 / a
 
