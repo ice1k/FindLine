@@ -9,11 +9,12 @@ import java.awt.BorderLayout
  * Created by ice1000 on 16-8-6.
  */
 open class FinderGUI(title: String, var graph: Finder666) {
-	val frame = Factory.create(title, { setupFrame() }, { file -> graph = graph.createFromFile(file) })
 	val panel = FinderImagePanel(graph)
+	val frame = Factory.create(title, { setupFrame() }, { file -> graph = graph.createFromFile(file) })
 
 	init {
 		frame.add(panel, BorderLayout.CENTER)
+		setupFrame()
 	}
 
 	private fun setupFrame() {

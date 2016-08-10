@@ -50,8 +50,6 @@ object Factory {
 		minusButton.addActionListener { action -> manageAverage(-5) }
 		frame.add(minusButton, BorderLayout.EAST)
 
-		setupFrame()
-
 		frame.defaultCloseOperation = JFrame.EXIT_ON_CLOSE
 		frame.isResizable = false
 		frame.isVisible = true
