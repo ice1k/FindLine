@@ -19,13 +19,6 @@ class Point(val x: Int, val y: Int, internal var getColor: (Int, Int) -> Boolean
 
 	override fun toString(): String = x.toString() + y.toString()
 
-	/** 判断两点是否连通 (｡ŏ﹏ŏ) */
-	infix fun connect(point: Point): Boolean {
-		val line = Line(this, point)
-		line.getAllPoints().forEach { p -> if (!getColor(p.x, p.y)) return false }
-		return true
-	}
-
 	operator override fun equals(other: Any?): Boolean {
 		if (other == null) return false
 		if (other is Point) return x == other.x && y == other.y

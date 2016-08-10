@@ -19,8 +19,6 @@ class Graph(file: File) {
 
 	var pointCache = Point(0, 0)
 
-	val getColor: (Int, Int) -> Boolean = { x, y ->	!this@Graph[x, y] }
-
 	init {
 		image = ImageIO.read(file)
 		cache = ImageIO.read(file)
@@ -47,8 +45,14 @@ class Graph(file: File) {
 		val line = Line(pointCache, point)
 		line.getAllPoints().forEach { p -> image.setRGB(p.x, p.y, Color.BLUE.rgb) }
 		pointCache = point
-		pointCache.getColor = getColor
 		return ret
+	}
+
+	/** 判断两点是否连通 (｡ŏ﹏ŏ) */
+	infix fun Point.connect(point: Point): Boolean {
+		val line = Line(this, point)
+		line.getAllPoints().forEach { p -> if (!this@Graph[p.x, p.y]) return false }
+		return true
 	}
 
 	/**
