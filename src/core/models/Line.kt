@@ -13,11 +13,11 @@ open class Line(one: Point, two: Point) {
 	private val a = two.y - one.y
 	private val b = one.x - two.x
 	private val c = two.x * one.y - one.x * two.y
-	val allPoints = HashSet<Point>()
+	val set = HashSet<Point>()
 
 	init {
-		(Math.min(one.x, two.x)..Math.max(one.x, two.x)).forEach { x -> if (b > 0) allPoints.add(Point(x, x2y(x))) }
-		(Math.min(one.y, two.y)..Math.max(one.y, two.y)).forEach { y -> if (a > 0) allPoints.add(Point(y2x(y), y)) }
+		(Math.min(one.x, two.x)..Math.max(one.x, two.x)).forEach { x -> if (b != 0) set.add(Point(x, x2y(x))) }
+		(Math.min(one.y, two.y)..Math.max(one.y, two.y)).forEach { y -> if (a != 0) set.add(Point(y2x(y), y)) }
 	}
 
 	fun x2y(x: Int) = -(a * x + c) / b

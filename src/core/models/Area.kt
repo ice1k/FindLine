@@ -16,7 +16,7 @@ abstract class Area(val origin: BufferedImage) {
 		init()
 	}
 
-	fun drawLine(line: Line) = line.allPoints.forEach { p ->
+	fun drawLine(line: Line) = line.set.forEach { p ->
 		image.setRGB(p.x, p.y, if (this[p.x, p.y]) Color.BLUE.rgb else Color.ORANGE.rgb)
 	}
 
@@ -32,7 +32,7 @@ abstract class Area(val origin: BufferedImage) {
 	}
 
 	protected infix fun Point.connect(point: Point): Boolean {
-		Line(this, point).allPoints.forEach { p -> if (this@Area[p.x, p.y]) return false }
+		Line(this, point).set.forEach { p -> if (this@Area[p.x, p.y]) return false }
 		return true
 	}
 }
