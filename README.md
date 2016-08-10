@@ -9,6 +9,11 @@ Working in progress.
 
 Use IntelliJ IDEA with Kotlin and Groovy Plugin (which are very easy to install), clone and open, that is all.
 
+# About
+
+I'm trying my best to decrease the number of lines of codes.<br/>
+Each line of Kotlin code contains a complex function, but it's still easy to read.
+
 # Language
 
 Module|Language

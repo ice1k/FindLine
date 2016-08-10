@@ -1,6 +1,6 @@
 package view.components
 
-import core.models.Graph
+import core.finder.Graph
 import core.models.Point
 import java.awt.Graphics
 import java.awt.event.MouseEvent

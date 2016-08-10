@@ -18,9 +18,8 @@ data class Point(val x: Int, val y: Int) {
 	override fun toString() = "($x, $y)"
 
 	operator override fun equals(other: Any?): Boolean {
-		if (other == null) return false
-		if (other is Point) return x == other.x && y == other.y
-		return false
+		if (other == null || other !is Point) return false
+		return x == other.x && y == other.y
 	}
 
 	override fun hashCode(): Int {

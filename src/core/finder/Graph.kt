@@ -1,30 +1,19 @@
-package core.models
+package core.finder
 
-import core.average
-import core.processors.Binarization
+import core.models.Area
+import core.models.Line
+import core.models.Point
 import java.awt.Color
-import java.awt.image.BufferedImage
 import java.io.File
-import javax.imageio.ImageIO
 
 /**
  * @author ice1000
  * Created by ice1000 on 16-8-6.
  */
-class Graph(file: File) {
-	val image: BufferedImage
-	val origin: BufferedImage
-	val mark: Array<Array<Boolean>>
+class Graph(file: File): Area(file) {
 	var pointCache = Point(0, 0)
 
-	init {
-		image = ImageIO.read(file)
-		origin = ImageIO.read(file)
-		mark = Array(origin.width, { Array(origin.height, { false }) })
-		init()
-	}
-
-	fun init() {
+	override fun init() {
 		(0..image.width - 1).forEach { x ->
 			(0..image.height - 1).forEach { y ->
 				image.setRGB(x, y, if (this[x, y]) Color.WHITE.rgb else Color.BLACK.rgb)
@@ -44,15 +33,9 @@ class Graph(file: File) {
 		return ret
 	}
 
-	fun drawLine(line: Line) = line.allPoints.forEach { p ->
-		image.setRGB(p.x, p.y, if (this[p.x, p.y]) Color.BLUE.rgb else Color.ORANGE.rgb)
-	}
-
 	private infix fun Point.connect(point: Point): Boolean {
 		Line(this, point).allPoints.forEach { p -> if (this@Graph[p.x, p.y]) return false }
 		return true
 	}
 
-	/** @return True is white, False is black */
-	operator fun get(x: Int, y: Int) = Binarization.gray(origin.getRGB(x, y)) > average
 }

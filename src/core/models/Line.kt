@@ -24,9 +24,8 @@ open class Line(start: Point, end: Point) {
 	fun y2x(y: Int) = (b * y + c) * -1 / a
 
 	override operator fun equals(other: Any?): Boolean {
-		if (other == null) return false
-		if (other is Line) return a / other.a == b / other.b && b / other.b == c / other.c
-		return false
+		if (other == null || other !is Line) return false
+		return a / other.a == b / other.b && b / other.b == c / other.c
 	}
 
 	override fun hashCode(): Int {
