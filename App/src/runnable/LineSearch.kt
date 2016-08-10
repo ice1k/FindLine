@@ -1,7 +1,7 @@
 package runnable
 
-import finder.TriangleFinder
-import view.FinderGUI
+import searcher.LineSearcher
+import view.SearcherGUI
 import java.io.File
 import javax.imageio.ImageIO
 
@@ -11,5 +11,5 @@ import javax.imageio.ImageIO
  */
 
 fun main(args: Array<String>) {
-	FinderGUI("Line by ice1000", TriangleFinder(ImageIO.read(File("test.png"))))
+	SearcherGUI("Search by ice1000", LineSearcher(ImageIO.read(File("test.png"))))
 }

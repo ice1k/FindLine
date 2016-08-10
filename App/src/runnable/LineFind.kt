@@ -1,7 +1,7 @@
 package runnable
 
 import finder.LineFinder
-import view.GUI
+import view.FinderGUI
 import java.io.File
 import javax.imageio.ImageIO
 
@@ -11,5 +11,5 @@ import javax.imageio.ImageIO
  */
 
 fun main(args: Array<String>) {
-	GUI("Line by ice1000", LineFinder(ImageIO.read(File("test.png"))))
+	FinderGUI("Line by ice1000", LineFinder(ImageIO.read(File("test.png"))))
 }

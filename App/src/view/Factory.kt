@@ -1,11 +1,9 @@
 package view
 
 import core.average
-import finder.LineFinder
 import view.components.Frame666
-import view.components.ImagePanel
 import java.awt.BorderLayout
-import javax.imageio.ImageIO
+import java.io.File
 import javax.swing.JButton
 import javax.swing.JFileChooser
 import javax.swing.JFrame
@@ -13,17 +11,15 @@ import javax.swing.filechooser.FileNameExtensionFilter
 
 /**
  * @author ice1000
- * Created by ice1000 on 16-8-6.
+ * Created by ice1000 on 2016/8/11.
  */
-open class GUI(title: String, var graph: LineFinder) {
-	val frame = Frame666(title)
-	val panel = ImagePanel(graph)
 
-	init {
+object Factory {
+	fun create(title: String, setupFrame: () -> Unit, changeGraph:(File)->Unit): Frame666 {
+		val frame = Frame666(title)
 		frame.layout = BorderLayout()
 
 		val chooserButton = JButton("Open File")
-		frame.add(panel, BorderLayout.CENTER)
 
 		chooserButton.addActionListener { action ->
 
@@ -32,7 +28,7 @@ open class GUI(title: String, var graph: LineFinder) {
 			chooser.fileFilter = FileNameExtensionFilter("Supported Image Format", "png", "jpg")
 
 			if (chooser.showOpenDialog(chooser) == JFileChooser.APPROVE_OPTION) {
-				graph = LineFinder(ImageIO.read(chooser.selectedFile)!!)
+				changeGraph(chooser.selectedFile)
 				setupFrame()
 			}
 		}
@@ -59,10 +55,7 @@ open class GUI(title: String, var graph: LineFinder) {
 		frame.defaultCloseOperation = JFrame.EXIT_ON_CLOSE
 		frame.isResizable = false
 		frame.isVisible = true
-	}
 
-	private fun setupFrame() {
-		frame.setupSize(graph.image.width, graph.image.height)
-		panel.change(graph)
+		return frame
 	}
 }

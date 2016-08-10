@@ -1,7 +1,7 @@
 package view.components
 
 import core.models.Point
-import finder.LineFinder
+import finder.Finder666
 import java.awt.Graphics
 import java.awt.event.MouseEvent
 import java.awt.event.MouseListener
@@ -12,7 +12,7 @@ import javax.swing.JPanel
  * @author ice1000
  * Created by ice1000 on 16-8-6.
  */
-class ImagePanel(var graph: LineFinder) : JPanel() {
+class FinderImagePanel(var graph: Finder666) : JPanel() {
 
 	var point = Point(0, 0)
 
@@ -38,7 +38,7 @@ class ImagePanel(var graph: LineFinder) : JPanel() {
 		g.drawImage(graph.image, 0, 0, this)
 	}
 
-	fun change(graph: LineFinder) {
+	fun change(graph: Finder666) {
 		this.graph = graph
 		graph.init()
 		repaint()

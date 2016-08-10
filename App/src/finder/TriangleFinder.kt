@@ -11,6 +11,10 @@ import java.awt.image.BufferedImage
 open class TriangleFinder(image: BufferedImage) : LineFinder(image) {
 	protected var pointCache1 = Point(2, 1)
 
+	/**
+	 * @param point send a clicked point
+	 * @return connected
+	 */
 	override fun send(point: Point): Boolean {
 		val ret = point connect pointCache1 && pointCache1 connect pointCache && point connect pointCache
 		drawLine(Line(pointCache1, pointCache))
