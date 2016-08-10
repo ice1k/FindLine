@@ -5,16 +5,19 @@
       <element id="directory" name="Line">
         <element id="library" level="project" name="KotlinJavaRuntime" />
         <element id="archive" name="App.jar">
+          <element id="directory" name="META-INF">
+            <element id="file-copy" path="$PROJECT_DIR$/App/src/meta/META-INF/MANIFEST.MF" />
+          </element>
           <element id="module-output" name="App" />
-          <element id="module-output" name="FindLine" />
         </element>
       </element>
       <element id="directory" name="Triangle">
         <element id="library" level="project" name="KotlinJavaRuntime" />
         <element id="archive" name="App.jar">
           <element id="directory" name="META-INF">
-            <element id="file-copy" path="$PROJECT_DIR$/App/src/META-INF2/MANIFEST.MF" />
+            <element id="file-copy" path="$PROJECT_DIR$/App/src/meta/META-INF2/MANIFEST.MF" />
           </element>
+          <element id="module-output" name="App" />
         </element>
       </element>
     </root>
