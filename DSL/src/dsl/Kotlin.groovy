@@ -1,7 +1,7 @@
 package dsl
 
 import finder.LineFinder
-import view.GUI
+import view.FinderGUI
 
 import javax.imageio.ImageIO
 
@@ -11,7 +11,7 @@ import javax.imageio.ImageIO
  *
  * This Class resolve staffs between Kotlin and Groovy
  */
-abstract class Kotlin extends GUI {
+abstract class Kotlin extends FinderGUI {
 
 	abstract String getPath();
 
