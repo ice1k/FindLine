@@ -9,5 +9,5 @@ import java.io.File
  * Created by ice1000 on 2016/8/11.
  */
 abstract class Finder666(image: BufferedImage) : Area(image), Finder {
-		abstract fun createFromFile(file: File): Finder666
+	abstract fun createFromFile(file: File): Finder666
 }

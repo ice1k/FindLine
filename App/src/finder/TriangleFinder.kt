@@ -3,6 +3,8 @@ package finder
 import core.models.Line
 import core.models.Point
 import java.awt.image.BufferedImage
+import java.io.File
+import javax.imageio.ImageIO
 
 /**
  * @author ice1000
@@ -24,4 +26,6 @@ open class TriangleFinder(image: BufferedImage) : LineFinder(image) {
 		pointCache1 = point
 		return ret
 	}
+
+	override fun createFromFile(file: File) = TriangleFinder(ImageIO.read(file)!!)
 }

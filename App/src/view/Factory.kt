@@ -15,7 +15,7 @@ import javax.swing.filechooser.FileNameExtensionFilter
  */
 
 object Factory {
-	fun create(title: String, setupFrame: () -> Unit, changeGraph:(File)->Unit): Frame666 {
+	fun create(title: String, setupFrame: () -> Unit, changeGraph: (File) -> Unit): Frame666 {
 		val frame = Frame666(title)
 		frame.layout = BorderLayout()
 
