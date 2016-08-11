@@ -1,6 +1,6 @@
 package view.components
 
-import core.models.Point
+import ice1000.models.Point
 import finder.Finder666
 import java.awt.Graphics
 import java.awt.event.MouseEvent

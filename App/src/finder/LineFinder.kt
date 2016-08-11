@@ -1,7 +1,7 @@
 package finder
 
-import core.models.Line
-import core.models.Point
+import ice1000.models.Line
+import ice1000.models.Point
 import java.awt.image.BufferedImage
 import java.io.File
 import javax.imageio.ImageIO

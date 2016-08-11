@@ -1,7 +1,7 @@
-package core.models
+package ice1000.models
 
-import core.average
-import utils.Binarization
+import ice1000.average
+import ice1000.utils.Binarization
 import java.awt.Color
 import java.awt.image.BufferedImage
 

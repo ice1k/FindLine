@@ -1,6 +1,6 @@
 package finder
 
-import core.models.Point
+import ice1000.models.Point
 
 /**
  * @author ice1000

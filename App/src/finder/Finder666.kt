@@ -1,6 +1,6 @@
 package finder
 
-import core.models.Area
+import ice1000.models.Area
 import java.awt.image.BufferedImage
 import java.io.File
 

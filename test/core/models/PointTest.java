@@ -1,6 +1,7 @@
 package core.models;
 
 import core.Test;
+import ice1000.models.Point;
 
 /**
  * @author ice1000

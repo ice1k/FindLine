@@ -1,4 +1,4 @@
-package utils
+package ice1000.utils
 
 import java.awt.Color
 

@@ -1,4 +1,4 @@
-package utils.debug
+package ice1000.utils.debug
 
 /**
  * @author ice1000

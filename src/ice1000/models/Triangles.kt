@@ -1,4 +1,4 @@
-package core.models
+package ice1000.models
 
 /**
  * @author ice1000

@@ -1,4 +1,4 @@
-package utils.exceptions
+package ice1000.utils.exceptions
 
 /**
  * @author ice1000

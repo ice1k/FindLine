@@ -1,6 +1,6 @@
 package view
 
-import core.average
+import ice1000.average
 import view.components.Frame666
 import java.awt.BorderLayout
 import java.io.File
