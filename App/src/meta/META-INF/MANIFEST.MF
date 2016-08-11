@@ -1,4 +1,4 @@
 Manifest-Version: 1.0
-Class-Path: kotlin-runtime.jar
+Class-Path: kotlin-runtime.jar lib.jar
 Main-Class: runnable.LineFindKt
 

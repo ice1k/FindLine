@@ -9,6 +9,9 @@ open class Point(val x: Int, val y: Int) {
 	/** 计算两点距离 */
 	infix fun distance(p: Point) = Math.sqrt(((p.x - x) * (p.x - x) + (p.y - y) * (p.y - y)).toDouble()).toInt()
 
+	/** @return point around this */
+	internal fun surrounded(): List<Point> = listOf(Point(x - 1, y), Point(x + 1, y), Point(x, y - 1), Point(x, y + 1))
+
 	override fun toString() = "( $x, $y )"
 
 	operator override fun equals(other: Any?): Boolean {
