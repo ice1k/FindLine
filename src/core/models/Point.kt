@@ -15,7 +15,10 @@ data class Point(val x: Int, val y: Int) {
 		if (quadrant == 5) quadrant = 3
 	}
 
-	override fun toString() = "($x, $y)"
+	/** 计算两点距离 */
+	infix fun distance(p: Point) = Math.sqrt(((p.x - x) * (p.x - x) + (p.y - y) * (p.y - y)).toDouble()).toInt()
+
+	override fun toString() = "( $x, $y )"
 
 	operator override fun equals(other: Any?): Boolean {
 		if (other == null || other !is Point) return false

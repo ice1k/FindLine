@@ -16,7 +16,7 @@ open class LineFinder(image: BufferedImage): Finder666(image) {
 	private var pointCache = Point(1, 2)
 
 	/**
-	 * @param point send a clicked point
+	 * @param point send a clicked p
 	 * @return connected
 	 */
 	override fun send(point: Point): Boolean {
