@@ -13,7 +13,7 @@ import javax.imageio.ImageIO
 open class LineFinder(image: BufferedImage): Finder666(image) {
 	override fun createFromFile(file: File) = LineFinder(ImageIO.read(file)!!)
 
-	protected var pointCache = Point(1, 2)
+	private var pointCache = Point(1, 2)
 
 	/**
 	 * @param point send a clicked point

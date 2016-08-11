@@ -10,8 +10,9 @@ import javax.imageio.ImageIO
  * @author ice1000
  * Created by ice1000 on 2016/8/10.
  */
-open class TriangleFinder(image: BufferedImage) : LineFinder(image) {
-	protected var pointCache1 = Point(2, 1)
+open class TriangleFinder(image: BufferedImage) : Finder666(image) {
+	private var pointCache1 = Point(2, 1)
+	private var pointCache = Point(1, 2)
 
 	/**
 	 * @param point send a clicked point
