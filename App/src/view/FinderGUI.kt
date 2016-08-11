@@ -2,6 +2,7 @@ package view
 
 import finder.Finder666
 import view.components.FinderImagePanel
+import view.components.Frame666
 import java.awt.BorderLayout
 
 /**
@@ -10,7 +11,7 @@ import java.awt.BorderLayout
  */
 open class FinderGUI(title: String, var graph: Finder666) {
 	val panel = FinderImagePanel(graph)
-	val frame = Factory.create(title, { setupFrame() }, { file -> graph = graph.createFromFile(file) })
+	val frame = Frame666(title, { setupFrame() }, { file -> graph = graph.createFromFile(file) })
 
 	init {
 		frame.add(panel, BorderLayout.CENTER)
