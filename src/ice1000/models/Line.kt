@@ -16,12 +16,12 @@ open class Line(one: Point, two: Point) {
 	val set = HashSet<Point>()
 
 	init {
-		(Math.min(one.x, two.x)..Math.max(one.x, two.x)).forEach { x -> if (b != 0) set.add(Point(x, x2y(x))) }
-		(Math.min(one.y, two.y)..Math.max(one.y, two.y)).forEach { y -> if (a != 0) set.add(Point(y2x(y), y)) }
+		(Math.min(one.x, two.x)..Math.max(one.x, two.x)).forEach { x -> set.add(Point(x, x2y(x))) }
+		(Math.min(one.y, two.y)..Math.max(one.y, two.y)).forEach { y -> set.add(Point(y2x(y), y)) }
 	}
 
-	fun x2y(x: Int) = -(a * x + c) / b
-	fun y2x(y: Int) = -(b * y + c) / a
+	fun x2y(x: Int) = if (b == 0) c / a else -(a * x + c) / b
+	fun y2x(y: Int) = if (a == 0) c / b else -(b * y + c) / a
 
 	override operator fun equals(other: Any?): Boolean {
 		if (other == null || other !is Line) return false

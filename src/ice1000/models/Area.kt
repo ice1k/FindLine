@@ -33,4 +33,15 @@ abstract class Area(val origin: BufferedImage) {
 		Line(this, point).set.forEach { p -> if (this@Area[p.x, p.y]) return false }
 		return true
 	}
+
+	private fun Point.legal() = x >= 0 && y >= 0 && x < origin.width && y < origin.height
+
+//	fun drawArea(point: Point): Set<Point> {
+//		val queue = LinkedBlockingQueue<Point>()
+//		val set = HashSet<Point>()
+//		queue.put(point)
+//		while (queue.isNotEmpty()) {
+//			queue.peek()
+//		}
+//	}
 }
