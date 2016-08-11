@@ -2,6 +2,7 @@ package ice1000.models
 
 import ice1000.average
 import ice1000.utils.Binarization
+import ice1000.utils.java.BooleanMap
 import java.awt.Color
 import java.awt.image.BufferedImage
 import java.util.*
@@ -38,15 +39,19 @@ abstract class Area(val origin: BufferedImage) {
 		return true
 	}
 
-	private fun Point.legal() = x >= 0 && y >= 0 && x < origin.width && y < origin.height
+	protected fun Point.legal() = x >= 0 && y >= 0 && x < origin.width && y < origin.height
 
-	fun getArea(point: Point): Set<Point> {
+	@Deprecated("Will take too much time") fun getArea(point: Point): Set<Point> {
 		val queue = LinkedBlockingQueue<Point>()
+		val mark = BooleanMap(origin.width, origin.height)
 		val set = HashSet<Point>()
 		queue.put(point)
 		while (queue.isNotEmpty()) {
 			set.add(queue.peek())
-			queue.addAll(queue.peek().surrounded().filter { p -> p.legal() && set.contains(p) })
+			mark[queue.peek().x, queue.peek().y] = true
+			queue.addAll(queue.poll().surrounded().filter { p ->
+				p.legal() && image.getRGB(p.x, p.y) == Color.BLACK.rgb && !mark[p.x, p.y]
+			})
 		}
 		return set
 	}

@@ -45,16 +45,17 @@ class Frame666(title: String, setupFrame: () -> Unit, changeGraph: (File) -> Uni
 			setupFrame()
 		}
 
-		val plusButton = JButton("+\n+\n+")
+		val plusButton = JButton("+")
 		plusButton.addActionListener { action -> manageAverage(5) }
 		add(plusButton, BorderLayout.WEST)
 
-		val minusButton = JButton("-\n-\n-")
+		val minusButton = JButton("-")
 		minusButton.addActionListener { action -> manageAverage(-5) }
 		add(minusButton, BorderLayout.EAST)
 
 		defaultCloseOperation = JFrame.EXIT_ON_CLOSE
 		isResizable = false
+		isVisible = true
 	}
 
 	override fun add(comp: Component, constraints: Any?) {
