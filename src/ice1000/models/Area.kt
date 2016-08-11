@@ -16,6 +16,8 @@ abstract class Area(val origin: BufferedImage) {
 		image.setRGB(p.x, p.y, if (this[p.x, p.y]) Color.BLUE.rgb else Color.ORANGE.rgb)
 	}
 
+	fun drawTriangle(triangle: Triangle) = triangle.lines().forEach { line -> drawLine(line) }
+
 	/** @return True is white, False is black */
 	operator fun get(x: Int, y: Int) = Binarization.gray(origin.getRGB(x, y)) > average
 

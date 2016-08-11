@@ -1,7 +1,7 @@
 package finder
 
-import ice1000.models.Line
 import ice1000.models.Point
+import ice1000.models.Triangle
 import java.awt.image.BufferedImage
 import java.io.File
 import javax.imageio.ImageIO
@@ -20,9 +20,7 @@ open class TriangleFinder(image: BufferedImage) : Finder666(image) {
 	 */
 	override fun send(point: Point): Boolean {
 		val ret = point connect pointCache1 && pointCache1 connect pointCache && point connect pointCache
-		drawLine(Line(pointCache1, pointCache))
-		drawLine(Line(point, pointCache))
-		drawLine(Line(point, pointCache1))
+		drawTriangle(Triangle(point, pointCache, pointCache1))
 		pointCache = pointCache1
 		pointCache1 = point
 		return ret
